@@ -16,7 +16,8 @@ public class AuthController {
         return authenticationService.getAuthURI().toString();
     }
 
-    @PostMapping("/setCode")
+    //TODO: handle redirect better
+    @GetMapping("/setCode")
     public boolean setCode(@RequestParam String code) {
         return authenticationService.setTokensByCode(code);
     }

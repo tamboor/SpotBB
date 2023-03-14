@@ -1,6 +1,8 @@
 package com.SpotifyStrains.StrainsApp.service;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,6 +18,7 @@ public class AuthenticationService {
     //TODO: change to global variable
     private final String scopes = "playlist-modify-public playlist-read-private playlist-modify-private user-library-read user-library-modify";
 
+    @Autowired
     private final SpotifyApi spotifyApi;
     private final AuthorizationCodeUriRequest authorizationCodeUriRequest;
 
@@ -32,6 +35,9 @@ public class AuthenticationService {
     }
 
     public boolean setTokensByCode(String code) {
+
+        System.out.println("set");
+
         AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code).build();
 
         try {
