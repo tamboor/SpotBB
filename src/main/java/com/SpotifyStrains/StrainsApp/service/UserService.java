@@ -29,7 +29,8 @@ public class UserService {
         try {
             return spotifyApi.getCurrentUsersProfile().build().execute();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
-            e.getMessage();
+            //TODO: change to log
+            System.out.println(e.getMessage());
             return null;
         }
     }

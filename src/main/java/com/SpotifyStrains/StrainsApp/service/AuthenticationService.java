@@ -12,11 +12,16 @@ import se.michaelthelin.spotify.requests.authorization.authorization_code.Author
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.logging.Logger;
 
 @Service
 public class AuthenticationService {
     //TODO: change to global variable
     private final String scopes = "playlist-modify-public playlist-read-private playlist-modify-private user-library-read user-library-modify";
+
+    //TODO: add logger
+//    @Autowired
+//    private final Logger logger;
 
     @Autowired
     private final SpotifyApi spotifyApi;
@@ -35,8 +40,6 @@ public class AuthenticationService {
     }
 
     public boolean setTokensByCode(String code) {
-
-        System.out.println("set");
 
         AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code).build();
 
